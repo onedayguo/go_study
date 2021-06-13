@@ -31,6 +31,22 @@ func recurveLeft(root *TreeNode, tail *TreeNode) *TreeNode {
 	return res
 }
 
+/*
+1. Two Sum
+*/
+func twoSum(nums []int, target int) []int {
+	// key:数，value：下标
+	var existed = make(map[int]int)
+	for i, num := range nums {
+		if value, ok := existed[target-num]; ok {
+			return []int{value, i}
+		} else {
+			existed[num] = i
+		}
+	}
+	return nil
+}
+
 func main() {
 	res := sumBase(34, 6)
 	fmt.Println(res)
