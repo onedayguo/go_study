@@ -47,6 +47,45 @@ func twoSum(nums []int, target int) []int {
 	return nil
 }
 
+// ListNode Definition for singly-linked list.
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+/*
+2. Add Two Numbers
+*/
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	var curNode *ListNode = &ListNode{0, nil}
+	var res = curNode
+	var take, l1Value, l2Value int
+	for l1 != nil || l2 != nil {
+		l1Value = 0
+		l2Value = 0
+		if l1 != nil {
+			l1Value = l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			l2Value = l2.Val
+			l2 = l2.Next
+		}
+		var sum = l1Value + l2Value + take
+		var cur = sum % 10
+		take = sum / 10
+		var next = &ListNode{cur, nil}
+		curNode.Next = next
+		curNode = next
+
+	}
+	if take > 0 {
+		var next = &ListNode{1, nil}
+		curNode.Next = next
+	}
+	return res.Next
+}
+
 func main() {
 	res := sumBase(34, 6)
 	fmt.Println(res)
