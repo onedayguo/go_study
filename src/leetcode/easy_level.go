@@ -114,6 +114,27 @@ func maxNum(a, b int) int {
 	return b
 }
 
+/*
+4. Median of Two Sorted Arrays
+*/
+func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+	var size1, size2 = len(nums1), len(nums2)
+	var sumNum = size1 + size2
+	var mid = sumNum / 2
+	var num1Index, num2Index, index = 0, 0, 0
+	for index <= mid {
+		if nums1[num1Index] < nums2[num2Index] {
+			num1Index++
+		}else {
+			num2Index++
+		}
+		index++
+	}
+	if sumNum%2 == 1 {
+		return 0
+	}
+}
+
 func main() {
 	var str string = "hello,world"
 	fmt.Println(str[1])

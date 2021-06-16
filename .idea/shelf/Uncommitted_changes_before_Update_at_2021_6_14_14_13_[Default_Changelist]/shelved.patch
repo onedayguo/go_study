@@ -1,0 +1,24 @@
+Index: src/leetcode/easy_level.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main\r\n\r\nimport \"fmt\"\r\n\r\n// 1837. Sum of Digits in Base K\r\nfunc sumBase(n int, k int) (sum int) {\r\n\tfor ; n > 0; n = n / k {\r\n\t\tsum += n % k\r\n\t}\r\n\treturn\r\n}\r\n\r\n// Definition for a binary tree node.\r\ntype TreeNode struct {\r\n\tVal   int\r\n\tLeft  *TreeNode\r\n\tRight *TreeNode\r\n}\r\n\r\n//897. Increasing Order Search Tree递归\r\nfunc increasingBST(root *TreeNode) *TreeNode {\r\n\treturn recurveLeft(root, nil)\r\n}\r\nfunc recurveLeft(root *TreeNode, tail *TreeNode) *TreeNode {\r\n\tif root == nil {\r\n\t\treturn tail\r\n\t}\r\n\tvar res = recurveLeft(root.Left, root)\r\n\troot.Left = nil\r\n\troot.Right = recurveLeft(root.Right, tail)\r\n\treturn res\r\n}\r\n\r\n/*\r\n1. Two Sum\r\n*/\r\nfunc twoSum(nums []int, target int) []int {\r\n\t// key:数，value：下标\r\n\tvar existed = make(map[int]int)\r\n\tfor i, num := range nums {\r\n\t\tif value, ok := existed[target-num]; ok {\r\n\t\t\treturn []int{value, i}\r\n\t\t} else {\r\n\t\t\texisted[num] = i\r\n\t\t}\r\n\t}\r\n\treturn nil\r\n}\r\n\r\n// ListNode Definition for singly-linked list.\r\ntype ListNode struct {\r\n\tVal  int\r\n\tNext *ListNode\r\n}\r\n\r\n/*\r\n2. Add Two Numbers\r\n*/\r\nfunc addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {\r\n\tvar curNode *ListNode = &ListNode{0, nil}\r\n\tvar res = curNode\r\n\tvar take, l1Value, l2Value int\r\n\tfor l1 != nil || l2 != nil {\r\n\t\tl1Value = 0\r\n\t\tl2Value = 0\r\n\t\tif l1 != nil {\r\n\t\t\tl1Value = l1.Val\r\n\t\t\tl1 = l1.Next\r\n\t\t}\r\n\t\tif l2 != nil {\r\n\t\t\tl2Value = l2.Val\r\n\t\t\tl2 = l2.Next\r\n\t\t}\r\n\t\tvar sum = l1Value + l2Value + take\r\n\t\tvar cur = sum % 10\r\n\t\ttake = sum / 10\r\n\t\tvar next = &ListNode{cur, nil}\r\n\t\tcurNode.Next = next\r\n\t\tcurNode = next\r\n\r\n\t}\r\n\tif take > 0 {\r\n\t\tvar next = &ListNode{1, nil}\r\n\t\tcurNode.Next = next\r\n\t}\r\n\treturn res.Next\r\n}\r\n\r\nfunc main() {\r\n\tres := sumBase(34, 6)\r\n\tfmt.Println(res)\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/leetcode/easy_level.go b/src/leetcode/easy_level.go
+--- a/src/leetcode/easy_level.go	(revision ef068cd47b5aae9c54fdf56e648c05eaab64fd4d)
++++ b/src/leetcode/easy_level.go	(date 1623639279421)
+@@ -86,6 +86,13 @@
+ 	return res.Next
+ }
+ 
++/*
++3. Longest Substring Without Repeating Characters
++*/
++func lengthOfLongestSubstring(s string) int {
++
++}
++
+ func main() {
+ 	res := sumBase(34, 6)
+ 	fmt.Println(res)
