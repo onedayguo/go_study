@@ -1,6 +1,8 @@
 package leetcode
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // 1837. Sum of Digits in Base K
 func sumBase(n int, k int) (sum int) {
@@ -86,7 +88,33 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	return res.Next
 }
 
+/*
+3. Longest Substring Without Repeating Characters
+*/
+func lengthOfLongestSubstring(s string) int {
+	var left, right, max, len int = 0, 0, 0, len(s)
+	exist := make(map[byte]bool)
+	for left < len && right < len {
+		if _, ok := exist[s[right]]; !ok {
+			exist[s[right]] = true
+			right++
+			max = maxNum(max, right-left)
+		} else {
+			delete(exist, s[left])
+			left++
+		}
+	}
+	return max
+}
+
+func maxNum(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
 func main() {
-	res := sumBase(34, 6)
-	fmt.Println(res)
+	var str string = "hello,world"
+	fmt.Println(str[1])
 }

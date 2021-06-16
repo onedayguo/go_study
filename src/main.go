@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 type Vertex struct {
 	x int
@@ -12,6 +15,7 @@ func (this *Vertex) getX() int {
 }
 
 func main() {
-	v := Vertex{1, 2}
-	fmt.Println(v.getX())
+	var str string = "hello,world"
+	fmt.Println(reflect.TypeOf(str[1]))
+	fmt.Println('E', 'e')
 }
