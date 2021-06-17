@@ -118,20 +118,36 @@ func maxNum(a, b int) int {
 4. Median of Two Sorted Arrays
 */
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
-	var size1, size2 = len(nums1), len(nums2)
-	var sumNum = size1 + size2
-	var mid = sumNum / 2
-	var num1Index, num2Index, index = 0, 0, 0
-	for index <= mid {
-		if nums1[num1Index] < nums2[num2Index] {
-			num1Index++
-		}else {
-			num2Index++
+	arr := []int{}
+
+	for len(nums1) > 0 || len(nums2) > 0 {
+		var n int
+
+		if len(nums1) == 0 {
+			n = nums2[0]
+			nums2 = nums2[1:]
+		} else if len(nums2) == 0 {
+			n = nums1[0]
+			nums1 = nums1[1:]
+		} else {
+			if nums1[0] > nums2[0] {
+				n = nums2[0]
+				nums2 = nums2[1:]
+			} else {
+				n = nums1[0]
+				nums1 = nums1[1:]
+			}
 		}
-		index++
+
+		arr = append(arr, n)
 	}
-	if sumNum%2 == 1 {
-		return 0
+
+	l := len(arr)
+
+	if l%2 == 0 {
+		return float64(arr[l/2]+arr[l/2-1]) / 2
+	} else {
+		return float64(arr[l/2])
 	}
 }
 
