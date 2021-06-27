@@ -36,3 +36,30 @@ func dfsSquare(nums, sums []int, index, target int) bool {
 
 	return false
 }
+
+/**
+ * @description: Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ * @return: 括号的组合数量
+ * @author: kami
+ * @关键词：递归
+ * @date: 2021/6/27 21:49
+ */
+func generateParenthesis(n int) []string {
+	result := make([]string, 0)
+	var sign []byte
+	backtrack(&result, sign, 0, 0, n)
+	return result
+}
+
+func backtrack(result *[]string, sign []byte, open, close, max int) {
+	if len(sign) == max*2 {
+		*result = append(*result, string(sign))
+		return
+	}
+	if open < max {
+		backtrack(result, append(sign, '('), open+1, close, max)
+	}
+	if close < open {
+		backtrack(result, append(sign, ')'), open, close+1, max)
+	}
+}
