@@ -151,6 +151,43 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	}
 }
 
+/**
+ * @description: 111. Minimum Depth of Binary Tree
+	Given a binary tree, find its minimum depth.
+	The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+	Note: A leaf is a node with no children.
+ * @return: 最浅深度
+ * @author: kami
+ * @关键词：层序遍历，使用队列，GO中没有队列，使用切片模拟
+ * @date: 2021/7/3 14:09
+*/
+func minDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	var minDepth = 1
+	var queue = make([]*TreeNode, 1)
+	queue[0] = root
+	var curIndex = 0
+	for {
+		var size = len(queue)
+		for i := curIndex; i < size; i++ {
+			if queue[i].Left == nil && queue[i].Right == nil {
+				return minDepth
+			}
+			if queue[i].Left != nil {
+				queue = append(queue, queue[i].Left)
+			}
+			if queue[i].Right != nil {
+				queue = append(queue, queue[i].Right)
+			}
+		}
+		minDepth++
+		curIndex = size
+	}
+
+}
+
 func main() {
 	var str string = "hello,world"
 	fmt.Println(str[1])
