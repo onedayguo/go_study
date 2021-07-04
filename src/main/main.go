@@ -24,6 +24,9 @@ func (v Vertex) setXX(value int) {
 	v.x = value
 }
 
-func main1() {
+func main() {
+	queue := []int{0, 1, 2, 3, 4, 5, 6, 7}
 
+	queue = append(queue[:0], queue[2:]...)
+	fmt.Println(queue)
 }
