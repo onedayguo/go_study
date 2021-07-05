@@ -188,6 +188,47 @@ func minDepth(root *TreeNode) int {
 
 }
 
+/**
+ * @description: 112. Path Sum
+	Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that
+	adding up all the values along the path equals targetSum.
+	A leaf is a node with no children.
+ * @return: 是否有一条路径节点之和等于目标值
+ * @author: kami
+ * @关键词：回溯
+ * @date: 2021/7/5 9:26
+*/
+func hasPathSum(root *TreeNode, targetSum int) bool {
+	if root == nil && targetSum == 0 {
+		return true
+	}
+	if root != nil && root.Val != 0 && targetSum != 0 {
+		return false
+	}
+
+	return findExpectSum(root, targetSum)
+
+}
+
+func findExpectSum(curNode *TreeNode, leftTargetSum int) bool {
+	if curNode.Val > leftTargetSum {
+		return false
+	}
+	if curNode.Val == leftTargetSum {
+		if curNode.Left == nil && curNode.Right == nil {
+			return true
+		}
+		return false
+	}
+	if curNode.Left != nil {
+		return findExpectSum(curNode.Left, leftTargetSum-curNode.Val)
+	}
+	if curNode.Right != nil {
+		return findExpectSum(curNode.Right, leftTargetSum-curNode.Val)
+	}
+	return false
+}
+
 func main() {
 	var str string = "hello,world"
 	fmt.Println(str[1])
