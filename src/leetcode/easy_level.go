@@ -199,34 +199,15 @@ func minDepth(root *TreeNode) int {
  * @date: 2021/7/5 9:26
 */
 func hasPathSum(root *TreeNode, targetSum int) bool {
-	if root == nil && targetSum == 0 {
+	if root == nil {
+		return false
+	}
+	if root.Val == targetSum && root.Left == nil && root.Right == nil {
 		return true
 	}
-	if root != nil && root.Val != 0 && targetSum != 0 {
-		return false
-	}
+	targetSum -= root.Val
+	return hasPathSum(root.Left, targetSum) || hasPathSum(root.Right, targetSum)
 
-	return findExpectSum(root, targetSum)
-
-}
-
-func findExpectSum(curNode *TreeNode, leftTargetSum int) bool {
-	if curNode.Val > leftTargetSum {
-		return false
-	}
-	if curNode.Val == leftTargetSum {
-		if curNode.Left == nil && curNode.Right == nil {
-			return true
-		}
-		return false
-	}
-	if curNode.Left != nil {
-		return findExpectSum(curNode.Left, leftTargetSum-curNode.Val)
-	}
-	if curNode.Right != nil {
-		return findExpectSum(curNode.Right, leftTargetSum-curNode.Val)
-	}
-	return false
 }
 
 func main() {
