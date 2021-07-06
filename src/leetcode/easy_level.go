@@ -207,7 +207,40 @@ func hasPathSum(root *TreeNode, targetSum int) bool {
 	}
 	targetSum -= root.Val
 	return hasPathSum(root.Left, targetSum) || hasPathSum(root.Right, targetSum)
+}
 
+/**
+ * @description: 113. Path Sum II
+	Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where each path's sum equals targetSum.
+
+	A leaf is a node with no children.
+ * @return: 所有路径节点之和等于目标值
+ * @author: kami
+ * @关键词：TODO
+ * @date: 2021/7/6 7:55
+*/
+func pathSum(root *TreeNode, targetSum int) [][]int {
+	res, _ := pathSumAll(root, targetSum, [][]int{}, []int{})
+	return res
+}
+
+func pathSumAll(root *TreeNode, targetSum int, resIn [][]int, curPathIN []int) ([][]int, []int) {
+	curPathIN = append(curPathIN, root.Val)
+	if root.Left == nil && root.Right == nil {
+		if root.Val == targetSum {
+			resIn = append(resIn, curPathIN)
+			return resIn, nil
+		} else {
+			return resIn, nil
+		}
+	}
+	if root.Left != nil {
+		resIn, _ = pathSumAll(root.Left, targetSum-root.Val, resIn, curPathIN)
+	}
+	if root.Right != nil {
+		resIn, _ = pathSumAll(root.Right, targetSum-root.Val, resIn, curPathIN)
+	}
+	return resIn, curPathIN
 }
 
 func main() {
