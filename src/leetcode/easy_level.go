@@ -216,31 +216,30 @@ func hasPathSum(root *TreeNode, targetSum int) bool {
 	A leaf is a node with no children.
  * @return: 所有路径节点之和等于目标值
  * @author: kami
- * @关键词：TODO
+ * @关键词：妙啊
  * @date: 2021/7/6 7:55
 */
-func pathSum(root *TreeNode, targetSum int) [][]int {
-	res, _ := pathSumAll(root, targetSum, [][]int{}, []int{})
-	return res
+func pathSum(root *TreeNode, sum int) [][]int {
+	var slice [][]int
+	slice = findPath(root, sum, slice, []int(nil))
+	return slice
 }
 
-func pathSumAll(root *TreeNode, targetSum int, resIn [][]int, curPathIN []int) ([][]int, []int) {
-	curPathIN = append(curPathIN, root.Val)
-	if root.Left == nil && root.Right == nil {
-		if root.Val == targetSum {
-			resIn = append(resIn, curPathIN)
-			return resIn, nil
-		} else {
-			return resIn, nil
-		}
+func findPath(n *TreeNode, sum int, slice [][]int, stack []int) [][]int {
+	if n == nil {
+		return slice
 	}
-	if root.Left != nil {
-		resIn, _ = pathSumAll(root.Left, targetSum-root.Val, resIn, curPathIN)
+	sum -= n.Val
+	stack = append(stack, n.Val)
+
+	if sum == 0 && n.Left == nil && n.Right == nil {
+		slice = append(slice, append([]int(nil), stack...))
+		stack = stack[:len(stack)-1]
 	}
-	if root.Right != nil {
-		resIn, _ = pathSumAll(root.Right, targetSum-root.Val, resIn, curPathIN)
-	}
-	return resIn, curPathIN
+
+	slice = findPath(n.Left, sum, slice, stack)
+	slice = findPath(n.Right, sum, slice, stack)
+	return slice
 }
 
 func main() {
