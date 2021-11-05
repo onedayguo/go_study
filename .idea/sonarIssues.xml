@@ -33,6 +33,41 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../go-bdjs/app/crm/up-sign/admin/internal/model/common.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../go-bdjs/app/crm/up-sign/admin/internal/server/http/common.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../go-bdjs/app/crm/up-sign/admin/internal/server/http/contract.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../go-bdjs/app/crm/up-sign/admin/internal/server/http/contract_internal.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../go-bdjs/app/crm/up-sign/admin/internal/server/http/cooperation.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../go-bdjs/app/crm/up-sign/admin/internal/server/http/server.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../go-bdjs/app/crm/up-sign/admin/internal/service/common.go">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../go-bdjs/app/crm/up-sign/admin/internal/service/contract_process.go">
           <value>
             <set />
@@ -94,6 +129,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/main.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/routine_main.go">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/test/slice_array.go">
           <value>
             <set />
           </value>

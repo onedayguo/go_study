@@ -1,10 +1,8 @@
 package main
 
 import (
-	"encoding/csv"
 	"fmt"
-	"log"
-	"os"
+	"strings"
 )
 
 type Vertex struct {
@@ -28,20 +26,10 @@ func (v Vertex) setXX(value int) {
 }
 
 func main() {
-	file, err := os.Create("seo_result.csv")
-	if err != nil {
-		log.Println(err)
-	}
-	defer file.Close()
-	writer := csv.NewWriter(file)
-	writer.Comma = ','
-	headline := []string{"URL", "Title", "Keywords", "Description"}
-	writer.Write(headline)
+	b := "现有 %s 机构申请与  绑定，合同已经被法务驳回 %s 次，请跟进"
 
-	record1 := []string{"http://baidu.com", "百度", "搜索一下，你就知道", "查询百科信息"}
-	record2 := []string{"http://baidu.com", "百度", "搜索一下，你就知道", "查询百科信息"}
-	record3 := []string{"http://baidu.com", "百度", "搜索一下，你就知道", "查询百科信息"}
-	writer.WriteAll([][]string{record1, record2, record3})
+	//切分字符串
+	str2 := strings.Split(b, "%s")
 
-	writer.Flush()
+	fmt.Sprintf(string(len(str2)))
 }

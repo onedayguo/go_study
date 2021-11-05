@@ -6,7 +6,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/panjf2000/ants/v2"
+	"github.com/panjf2000/ants"
 )
 
 var sum int32
@@ -22,7 +22,7 @@ func demoFunc() {
 	fmt.Println("Hello World!")
 }
 
-func main() {
+func main1() {
 	defer ants.Release()
 
 	runTimes := 1000
